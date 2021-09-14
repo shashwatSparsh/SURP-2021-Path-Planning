@@ -54,6 +54,7 @@ for i in range(0,10):
         coord = [xVals[i],yVals[j]]
         rowCoords.append(coord)
     Coords.append(rowCoords)
+    rowCoords = []
 
 #print(Coords)
 #print(rowCoords)    
@@ -81,8 +82,21 @@ def rotate(origin, point, angle):
 
     qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
     qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
-    return qy, qx
+    return (qy, qx)
 
+
+newCoords = []
+newRowCoords = []
+
+for i in range(len(Coords)):
+    for j in range(len(Coords[i])):
+        newCoord = rotate(originCoord, Coords[i][j], theta)
+        #print(newCoord)
+        newRowCoords.append(newCoord)
+    newCoords.append(newRowCoords)
+    newRowCoords = []
+
+    
 
 
 
