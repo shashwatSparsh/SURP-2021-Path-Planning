@@ -8,6 +8,8 @@ import scipy as sc
 import numpy as np
 import math as math
 
+#Note: originCoord, abCoord, cdCoord, and angleCoord, are annotated on a screenshot in the repository
+
 #   Original Coordinate Matrix
 '''Origin Coords'''
 x0 = 33.644561
@@ -20,6 +22,7 @@ abCoord = [a0, b0]
 
 c0 = 33.64428
 d0 = -117.841662
+cdCoord = [c0, d0]
 
 horizStepVal = (b0-y0)/10
 vertStepVal = (c0-x0)/10
@@ -80,6 +83,10 @@ def rotate(origin, point, angle):
     #the new coordinates are calculated by the angular rotation
     qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
     qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
+    
+    qx = round(qx, 6)
+    qy = round(qy, 6)
+    
     return (qy, qx)
 
 
@@ -116,4 +123,4 @@ for i in range(len(aStarSol)):
     waypoints.append(coordinate)
 
 #print solution in console
-print(waypoints)
+#print(waypoints)
